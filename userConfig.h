@@ -1,15 +1,50 @@
+/*
+ * RF24Audio -- userConfig.h
+ *
+ * (c) 2016 Gerad Munsch <gmunsch@unforgivendevelopment.com>
+ * (c) 201? TMRh20
+ *
+ * TMRh20's source code repository is located at the following URL:
+ * - https://github.com/TMRh20/RF24Audio
+ *
+ * DESCRIPTION:
+ * This file shall be edited prior to compilation, as the options are built into
+ * the final binaries. Run-time configuration is currently not possible.
+ */
 
+/******************************************************************************/
 
+/*
+ * MANDATORY User Variables
+ *
+ * Please note that the following "#define" variables are MANDATORY:
+ * - SAMPLE_RATE
+ *   - The sample rate to use for transferring audio samples. Please note that
+ *     44 KHz+ sample rates require 8-bits per sample.
+ *   - DEFAULT: 24000
+ * - RF_SPEED
+ *   - As a guideline:
+ *     - RF24_250KBPS will handle a sample rate of ~13-20 KHz
+ *     - RF24_1MBPS will handle a sample rate of ~24-44 KHz
+ *     - RF24_2MBPS will handle pretty much any sample rate provided
+ *   - DEFAULT: RF24_1MBPS
+ * - ANALOG_PIN
+ *   - This defines the pin that analog readings will be recorded from (ie: the
+ *     microphone will be connected to this pin)
+ *   - DEFAULT: A0
+ *
+ * GENERAL GUIDELINES/TIPS:
+ * - For maximum RANGE:
+ *   - SAMPLE_RATE: 16000
+ *   - RF_SPEED:    RF24_250KBPS
+ * - For maximum QUALITY:
+ *   - SAMPLE_RATE: 44000
+ *   - RF_SPEED:    RF24_2MBPS
+ */
 
-/***********************************************
-//******* MANDATORY User Variables **************/
-
- // Maximum Range: Sample rate 16000, RF_SPEED RF24_250KBPS
- // Maximum Quality: Sample rate 44000, RF_SPEED RF24_2MBPS
-
-#define SAMPLE_RATE 24000                     // The sample rate to use for transferring audio samples  Note: 44khz+ sample rate requires 8-bits per sample
-#define RF_SPEED RF24_1MBPS                   // RF24_250KBPS will do 13-20khz+ sample rate, RF24_1MBPS up to 24-44khz+, RF24_2MBPS for higher. These are not limits, just a guide.
-#define ANALOG_PIN A0                         // The pin that analog readings will be taken from (microphone pin)
+#define SAMPLE_RATE   24000
+#define RF_SPEED      RF24_1MBPS
+#define ANALOG_PIN    A0
 
 /************ OverRides *************************/
 
@@ -71,17 +106,3 @@
 //********Radio Defines ****************************
 // Radio pipe addresses for the 2 nodes to communicate.
 const uint64_t pipes[14] = { 0xABCDABCD71LL, 0x544d52687CLL, 0x544d526832LL, 0x544d52683CLL,0x544d526846LL, 0x544d526850LL,0x544d52685ALL, 0x544d526820LL, 0x544d52686ELL, 0x544d52684BLL, 0x544d526841LL, 0x544d526855LL,0x544d52685FLL,0x544d526869LL};
-
-
-
-
-
-
-
-
-
-
-
-
-
-

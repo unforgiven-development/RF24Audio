@@ -1,10 +1,13 @@
-
+/*
+ * RF24Audio -- RF24Audio.cpp
+ *
+ */
 
 
 #if ARDUINO < 100
-#include <WProgram.h>
+  #include <WProgram.h>
 #else
-#include <Arduino.h>
+  #include <Arduino.h>
 #endif
 
 #include <stddef.h>
@@ -43,13 +46,12 @@ const byte broadcastVal = 255; // The value for broadcasting to all nodes using 
 /*****************************************************************************************************************************/
 /************************************************* General Section ***********************************************************/
 
-RF24Audio::RF24Audio(RF24& _radio, byte radioNum): radio(_radio){
-	radi = radio;
-	radioIdentifier = radioNum;
+RF24Audio::RF24Audio(RF24& _radio, byte radioNum): radio(_radio) {
+  radi = radio;
+  radioIdentifier = radioNum;
 }
 
-void RF24Audio::begin(){
-
+void RF24Audio::begin() {
   radio.begin();
   //delay(500);
   // Set the defined input pins as inputs with pullups high. See http://arduino.cc/en/Tutorial/InputPullupSerial
